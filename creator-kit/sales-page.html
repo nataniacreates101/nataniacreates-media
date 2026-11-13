@@ -389,7 +389,13 @@ if(P.location.hash==="#buy"){var b=pd.getElementById("buy");if(b)b.scrollIntoVie
 @media (prefers-reduced-motion: reduce){.ckp, .ckp *, .ckp *::before, .ckp *::after{animation: none !important; transition: none !important;}
 .ckp .rv.pre{transform: none;}
 .ckp .tick svg{stroke-dashoffset: 0;}
-.ckp{}}</style>
+.ckp{}}
+html, body { overflow-x: hidden; }
+.ckp { width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); }
+.ckp a { text-decoration: none !important; }
+.ckp .btn { color: #fff !important; }
+.ckp .sticky a { color: var(--ink) !important; }
+.ckp footer { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }</style>
 <div class="ckp">
 
 <div class="bar timer cd" role="timer" aria-label="Time left before the Creator Kit closes on Tuesday"><span class="tl">$17 Creator Kit closes Tuesday</span><span class="clock" aria-hidden="true"><b data-u="d">0</b><i>d</i><b data-u="h">00</b><i>h</i><b data-u="m">00</b><i>m</i><b data-u="s">00</b><i>s</i></span><span class="closed">The Creator Kit is now closed</span></div>
@@ -854,7 +860,8 @@ if(P.location.hash==="#buy"){var b=pd.getElementById("buy");if(b)b.scrollIntoVie
   function upd() {
     var pastHero = hero.getBoundingClientRect().bottom < 0;
     var r = price.getBoundingClientRect(), atPrice = r.top < window.innerHeight && r.bottom > 0;
-    sticky.classList.toggle('show', pastHero && !atPrice);
+    var buy = document.getElementById('buy'), atBuy = buy && buy.getBoundingClientRect().top < window.innerHeight;
+    sticky.classList.toggle('show', pastHero && !atPrice && !atBuy);
   }
   window.addEventListener('scroll', upd, { passive: true });
   upd();
